@@ -8,6 +8,9 @@ request.onupgradeneeded = (event) => {
 
 request.onsuccess = (event) => {
     db = event.target.result;
+    if (navigator.onLine) {
+        dbCheck();
+    }
 }
 
 function saveRecord(record) {
