@@ -1,7 +1,9 @@
-var mongoose = require("mongoose");
-var db = require("../models");
+let db = require("../models");
+const { connected } = require('../config/connection');
 
-var transactionSeed = [
+connected();
+
+let transactionSeed = [
     {
         name: "Christmas",
         value: 300,
