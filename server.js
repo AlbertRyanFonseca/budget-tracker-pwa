@@ -18,11 +18,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', function () {
-  console.log('Connected');
-})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
+  useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 // routes
 app.use(require("./routes/api.js"));
 
