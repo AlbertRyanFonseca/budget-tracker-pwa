@@ -16,11 +16,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
-
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'))
+db.once('open', function () {
+  console.log('Connected');
+})
 // routes
 app.use(require("./routes/api.js"));
 
