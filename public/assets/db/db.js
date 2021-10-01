@@ -37,3 +37,5 @@ function dbCheck() {
         }
     }
 }
+
+window.addEventListener("online", dbCheck);
